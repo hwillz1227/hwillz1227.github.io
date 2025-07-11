@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REPAIRLY | 重新定义北美运动康复市场</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        /* MODIFICATION: Removed the complex background-image for a clean, solid color */
+        .hero-bg {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800 tracking-wider">REPAIRLY</a>
+            <div class="relative">
+                <!-- Dropdown Menu Button -->
+                <button id="menu-button" class="flex items-center space-x-2 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100 transition duration-300">
+                    <span>导航</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <!-- Dropdown Menu -->
+                <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 hidden">
+                    <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">首页</a>
+                    <a href="pitch.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">融资路演</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="hero-bg">
+            <div class="container mx-auto flex flex-col items-center justify-center min-h-screen text-center px-6">
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-800 mb-4">REPAIRLY</h1>
+                <p class="text-xl md:text-2xl font-light text-gray-600 mb-8 max-w-3xl">一个已被验证、尚无领导者、且由法规保护的蓝海机遇。我们正在重新定义北美运动康复市场。</p>
+                <a href="pitch.html" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300 text-lg shadow-lg">
+                    查看融资路演
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // JavaScript for Dropdown Menu
+        const menuButton = document.getElementById('menu-button');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+
+        menuButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent the window click event from firing immediately
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown if clicking outside of it
+        window.addEventListener('click', (event) => {
+            if (!dropdownMenu.classList.contains('hidden') && !menuButton.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>

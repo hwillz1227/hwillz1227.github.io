@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REPAIRLY | 融资路演</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F5F5F5;
+            color: #424242;
+            padding-top: 80px; /* Add padding to avoid content being hidden by fixed header */
+        }
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 1px solid #E0E0E0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .slide.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-content {
+            width: 100%;
+            max-width: 1200px;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; 
+        }
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding-top: 0;
+            }
+            header { display: none !important; }
+            .slide {
+                min-height: auto !important;
+                height: auto !important;
+                padding: 40px 20px !important;
+                border-bottom: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                page-break-after: always;
+                display: block;
+            }
+            .slide:last-child { page-break-after: avoid; }
+            .grid { display: block !important; }
+            .grid > * { margin-bottom: 1.5rem; }
+            .flex.flex-col.md\:flex-row { display: block !important; }
+            .flex.flex-col.md\:flex-row > * { margin-bottom: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800 tracking-wider">REPAIRLY</a>
+            <div class="relative">
+                <!-- Dropdown Menu Button -->
+                <button id="menu-button" class="flex items-center space-x-2 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100 transition duration-300">
+                    <span>导航</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <!-- Dropdown Menu -->
+                <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 hidden">
+                    <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">首页</a>
+                    <a href="pitch.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">融资路演</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main content from the original page -->
+    <main>
+        <section id="slide1" class="slide">
+            <div class="slide-content text-center">
+                <div class="mb-8">
+                    <span class="text-6xl md:text-8xl font-bold text-gray-800 tracking-wider">REPAIRLY</span>
+                </div>
+                <h2 class="text-2xl md:text-4xl font-light text-gray-700 mb-4">重新定义北美运动康复市场</h2>
+                <p class="text-lg md:text-xl text-blue-600">一个已被验证、尚无领导者、且由法规保护的蓝海机遇</p>
+            </div>
+        </section>
+
+        <section id="slide2" class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">我们的使命与机遇</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-4">使命 (The Mission)</h3>
+                        <p class="text-lg text-gray-700">为北美精英健身人群，提供市面上唯一合法合规的专业级EMS深度康复解决方案。</p>
+                    </div>
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-4">被验证的需求</h3>
+                        <p class="text-lg text-gray-700">筋膜枪已教育出价值数十亿美元的“训练后恢复”市场，但其物理冲击方式存在局限。</p>
+                    </div>
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-4">未被满足的痛点</h3>
+                        <p class="text-lg text-gray-700">现有EMS产品体验差（如电流刺痛感），且几乎全部非法，无法进入正规渠道，市场存在信任赤字。</p>
+                    </div>
+                    <div class="card p-8 rounded-lg bg-blue-50 border-blue-500">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-4">巨大的市场真空</h3>
+                        <p class="text-lg text-gray-700">我们面临一个“有需求、无供给”的巨大蓝海市场。北美穿戴健康设备市场预计在2030年将超过1000亿美元。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide3" class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">我们的不公平优势 (Our Unfair Advantage)</h2>
+                <div class="space-y-6">
+                    <div class="card p-6 rounded-lg flex items-center gap-6"><div class="text-4xl text-blue-600 font-bold">1</div><p class="text-lg text-gray-700"><strong class="text-gray-900">市场真空，合法先行:</strong> 作为首批以II类医疗器械标准进入市场的专业品牌，我们享受无竞争的先发优势和法规护城河。</p></div>
+                    <div class="card p-6 rounded-lg flex items-center gap-6"><div class="text-4xl text-blue-600 font-bold">2</div><p class="text-lg text-gray-700"><strong class="text-gray-900">技术壁垒，成本领先:</strong> 依托中国母公司的成熟技术和世界级供应链，我们的成本和研发效率远超任何北美对手。</p></div>
+                    <div class="card p-6 rounded-lg flex items-center gap-6"><div class="text-4xl text-blue-600 font-bold">3</div><p class="text-lg text-gray-700"><strong class="text-gray-900">精准客群，高付费力:</strong> 我们精准锁定北美超8000万核心健身用户，他们消费能力强，付费意愿已被市场充分验证。</p></div>
+                    <div class="card p-6 rounded-lg flex items-center gap-6"><div class="text-4xl text-blue-600 font-bold">4</div><p class="text-lg text-gray-700"><strong class="text-gray-900">模式验证，风险降低:</strong> 中国市场的同类产品已取得巨大成功，证明了此模式的强大生命力，极大降低了投资风险。</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide4" class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">融资需求与关键里程碑</h2>
+                <div class="text-center mb-12">
+                    <p class="text-lg text-gray-600">我们正在寻求种子轮融资</p>
+                    <p class="text-5xl md:text-7xl font-bold text-blue-600 my-2">2,500,000 CNY</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="card p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">产品与法规 (50%)</h3>
+                        <ul class="text-left list-disc list-inside text-gray-600 space-y-1">
+                            <li>获得加拿大MDL许可</li>
+                            <li>启动美国FDA 510(k)申请</li>
+                            <li>App核心功能与AI算法集成</li>
+                        </ul>
+                    </div>
+                    <div class="card p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">生产与供应链 (30%)</h3>
+                        <ul class="text-left list-disc list-inside text-gray-600 space-y-1">
+                            <li>完成首批1000-2000台生产</li>
+                            <li>关键物料双渠道备份</li>
+                            <li>建立北美3PL合作</li>
+                        </ul>
+                    </div>
+                    <div class="card p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">市场与运营 (20%)</h3>
+                        <ul class="text-left list-disc list-inside text-gray-600 space-y-1">
+                            <li>Shopify独立站搭建与运营</li>
+                            <li>Google/Meta/Tiktok广告投放</li>
+                            <li>组建双语客服团队</li>
+                            <li>KOL预热沟通</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide5" class="slide">
+            <div class="slide-content text-center">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800">市场篇</h2>
+                <p class="text-2xl md:text-3xl text-blue-600 mt-4">一个为您准备好的蓝海</p>
+            </div>
+        </section>
+
+        <section id="slide6" class="slide">
+            <div class="slide-content">
+                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">市场数据对比：人口与收入</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start justify-center">
+                    <div class="w-full card p-6 rounded-lg">
+                        <div class="chart-container">
+                            <canvas id="populationChart"></canvas>
+                        </div>
+                    </div>
+                     <div class="w-full card p-6 rounded-lg">
+                        <div class="chart-container">
+                            <canvas id="disposableIncomeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="slide6b" class="slide">
+            <div class="slide-content">
+                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">市场数据对比：支出与规模</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start justify-center">
+                    <div class="w-full card p-6 rounded-lg">
+                        <div class="chart-container">
+                            <canvas id="healthSpendingChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="w-full card p-6 rounded-lg">
+                        <div class="chart-container">
+                            <canvas id="marketSizeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                 <p class="text-center text-xl mt-12 font-semibold text-gray-800">投资启示: 北美市场在价值密度上拥有绝对优势。更少的总人口，却拥有更多的核心付费用户、近10倍的人均可支配收入和超4倍的直接消费意愿。</p>
+            </div>
+        </section>
+
+        <section id="slide7" class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">北美目标客群画像</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">专业/业余力量训练爱好者</h3>
+                        <p class="text-5xl font-bold text-blue-600 mb-4">约6,100万人</p>
+                        <ul class="text-left list-disc list-inside text-gray-600 space-y-2">
+                            <li>北美市场中坚消费力量</li>
+                            <li>注重设备的有效性与便捷性</li>
+                            <li>是品牌口碑的核心传播者</li>
+                        </ul>
+                    </div>
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">私教学员</h3>
+                        <p class="text-5xl font-bold text-blue-600 mb-4">约1,800万人</p>
+                        <ul class="text-left list-disc list-inside text-gray-600 space-y-2">
+                            <li>高净值人群</li>
+                            <li>信赖专业推荐，偏好高端、高效的设备</li>
+                            <li>是我们的高价值付费用户</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-12 text-center card p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-blue-600">核心市场洞察</h3>
+                    <p class="text-lg mt-2 max-w-4xl mx-auto text-gray-700">北美消费者高度依赖线上渠道获取信息和购买，并极度信赖专业人士（教练、运动员）的推荐，愿意为高品质、智能化、个性化的产品支付溢价。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide8" class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">竞争格局 - 合法性是我们的“降维打击”</h2>
+                <div class="overflow-x-auto card rounded-lg p-2">
+                    <table class="w-full min-w-[700px] text-left border-collapse">
+                        <thead>
+                            <tr class="border-b-2 border-gray-300">
+                                <th class="p-4 text-xl font-semibold text-blue-700">竞品</th>
+                                <th class="p-4 text-xl font-semibold text-blue-700">类型</th>
+                                <th class="p-4 text-xl font-semibold text-blue-700">价格 (CAD)</th>
+                                <th class="p-4 text-xl font-semibold text-blue-700">核心痛点</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200"><td class="p-4 font-medium text-gray-800 text-lg">Theragun</td><td class="p-4 text-gray-600">击打式</td><td class="p-4 font-mono text-gray-600">~$799</td><td class="p-4 text-red-600">❌ 噪音大，仅放松表层</td></tr>
+                            <tr class="border-b border-gray-200"><td class="p-4 font-medium text-gray-800 text-lg">Normatec</td><td class="p-4 text-gray-600">气压式</td><td class="p-4 font-mono text-gray-600">~$999</td><td class="p-4 text-red-600">❌ 体积巨大，价格昂贵，场景固定</td></tr>
+                            <tr class="border-b border-gray-200"><td class="p-4 font-medium text-gray-800 text-lg">Compex</td><td class="p-4 text-gray-600">传统EMS</td><td class="p-4 font-mono text-gray-600">~$419</td><td class="p-4 text-red-600">❌ 电流刺痛感明显，体验不佳</td></tr>
+                            <tr class="border-b border-gray-200"><td class="p-4 font-medium text-gray-800 text-lg">Amazon廉价EMS</td><td class="p-4 text-gray-600">未知</td><td class="p-4 font-mono text-gray-600"><$100</td><td class="p-4 text-red-600">❌ 全部非法，无品牌，无保障</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-12 text-center card p-8 rounded-lg bg-blue-50 border-blue-500">
+                    <h3 class="text-2xl font-bold text-gray-800">我们的机会</h3>
+                    <p class="text-xl mt-2 text-blue-600">在“便携、舒适、智能、合规”的EMS康复设备领域，市场完全空白。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide9" class="slide">
+            <div class="slide-content text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">成功先例 - 已被中国市场验证</h2>
+                <div class="card p-6 rounded-lg max-w-4xl mx-auto">
+                    <p class="text-lg text-gray-600 mb-6">已有产品是绝佳的证据，它向投资人证明了这不是一个猜想，而是一个拥有强大市场吸引力的成熟模式。</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-gray-100 p-6 rounded">
+                            <p class="text-6xl font-bold text-blue-600">105,000+</p>
+                            <p class="text-xl mt-2 text-gray-700">产品销量</p>
+                        </div>
+                        <div class="bg-gray-100 p-6 rounded">
+                            <p class="text-6xl font-bold text-blue-600">6,400+</p>
+                            <p class="text-xl mt-2 text-gray-700">用户评论</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-left space-y-4 text-gray-700">
+                        <p class="text-lg flex items-start"><span class="text-green-600 mr-3">✔</span> 更优越的市场: 我们将此模式带到一个竞争更小、客单价更高、法规壁垒更强的北美市场。</p>
+                        <p class="text-lg flex items-start"><span class="text-green-600 mr-3">✔</span> 更低的风险: 这意味着更低的早期市场教育成本和更高的成功概率。</p>
+                        <p class="text-lg flex items-start"><span class="text-green-600 mr-3">✔</span> 更大的市场潜力: 如复制在中国这个体量为北美市场1/3的市场成功案例，精准投放北美市场，该产品的潜力为无限大。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide10" class="slide">
+            <div class="slide-content text-center">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800">产品篇</h2>
+                <p class="text-2xl md:text-3xl text-blue-600 mt-4">从“表层放松”到“深层康复”的升维打击</p>
+            </div>
+        </section>
+
+        <section id="slide11" class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">我们的产品生态系统</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">硬件：直观、有效、轻便、简单</h3>
+                        <ul class="text-left list-none space-y-4">
+                            <li class="flex items-start"><span class="text-blue-600 mr-4 text-3xl">⚡</span><div><strong class="text-lg text-gray-900">核心技术:</strong><p class="text-gray-600">源自母公司的成熟MVPI技术，确保深度、舒适的康复体验。</p></div></li>
+                            <li class="flex items-start"><span class="text-blue-600 mr-4 text-3xl">🔗</span><div><strong class="text-lg text-gray-900">模块化设计:</strong><p class="text-gray-600">主机通过磁吸接口，灵活连接绑带、贴片等多种终端亲肤设备，适应不同场景。</p></div></li>
+                        </ul>
+                    </div>
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">软件：硬件之外的持续性收入</h3>
+                        <ul class="text-left list-none space-y-4">
+                            <li class="flex items-start"><span class="text-blue-600 mr-4 text-3xl">📱</span><div><strong class="text-lg text-gray-900">智能APP:</strong><p class="text-gray-600">远程操作，界面直观。</p></div></li>
+                            <li class="flex items-start"><span class="text-blue-600 mr-4 text-3xl">👑</span><div><strong class="text-lg text-gray-900">会员订阅服务:</strong><p class="text-gray-600">AI定制康复计划、一对一在线教练咨询、消耗品会员折扣。</p></div></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-12 text-center card p-6 rounded-lg bg-blue-50 border-blue-500">
+                    <p class="text-xl font-semibold text-gray-800">我们的模式：硬件 + 软件 + 订阅服务 = 高用户粘性 + 持续性营收</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide12" class="slide">
+             <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">我们的护城河 - 技术与供应链</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">技术壁垒</h3>
+                        <ul class="text-left list-disc list-inside text-gray-600 space-y-2 text-lg">
+                            <li>源自母公司超过 10 年的研发积累</li>
+                            <li>拥有 30+ 项相关专利</li>
+                            <li>产品在亚洲市场已稳定迭代多次</li>
+                        </ul>
+                    </div>
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">供应链优势</h3>
+                         <ul class="text-left list-disc list-inside text-gray-600 space-y-2 text-lg">
+                            <li>与深圳拥有MDSAP-ISO13485资质的顶级电子代工厂深度合作</li>
+                            <li>生产成本比北美初创公司低50%</li>
+                            <li>对电极贴片、电池、MCU芯片等关键物料进行双渠道备份</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide13" class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">上市策略 (Go-to-Market Strategy)</h2>
+                 <div class="flex flex-col md:flex-row justify-center items-stretch gap-4">
+                    <div class="md:w-1/3 card p-6 rounded-lg flex flex-col">
+                        <p class="text-sm font-bold text-blue-600">阶段一 (上市前3个月)</p>
+                        <h3 class="text-xl font-bold mt-2 mb-2 text-gray-800">KOL矩阵与内容预热</h3>
+                        <p class="text-gray-600 flex-grow">与专业运动员、理疗师及垂类KOL合作，进行产品深度测评，产出高质量专业内容，建立品牌权威性。</p>
+                    </div>
+                    <div class="text-2xl text-blue-600 self-center mx-4 transform md:rotate-0 rotate-90">→</div>
+                    <div class="md:w-1/3 card p-6 rounded-lg flex flex-col border-2 border-blue-500">
+                        <p class="text-sm font-bold text-blue-600">阶段二 (上市后1个月)</p>
+                        <h3 class="text-xl font-bold mt-2 mb-2 text-gray-800">集中式爆发营销</h3>
+                        <p class="text-gray-600 flex-grow">在Google, Meta, TikTok进行饱和式广告投放，并协调所有KOL集中发布内容，形成刷屏效应，快速抢占用户心智。</p>
+                    </div>
+                    <div class="text-2xl text-blue-600 self-center mx-4 transform md:rotate-0 rotate-90">→</div>
+                     <div class="md:w-1/3 card p-6 rounded-lg flex flex-col">
+                        <p class="text-sm font-bold text-blue-600">阶段三 (持续进行)</p>
+                        <h3 class="text-xl font-bold mt-2 mb-2 text-gray-800">持续性用户增长</h3>
+                        <p class="text-gray-600 flex-grow">基于数据优化效果营销，并通过SEO内容矩阵和社群运营，持续、低成本地获取新用户。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide14" class="slide">
+            <div class="slide-content text-center">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-12">结论：快、准、狠</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-8xl font-bold text-blue-600 mb-4">快</h3>
+                        <p class="text-xl text-gray-700">抢占先机。在国内竞品进入北美前，利用法规壁垒和先发优势，迅速占领市场空白。</p>
+                    </div>
+                    <div class="card p-8 rounded-lg border-2 border-blue-500">
+                        <h3 class="text-8xl font-bold text-blue-600 mb-4">准</h3>
+                        <p class="text-xl text-gray-700">精准定位。直接切入已被验证的高价值、高付费意愿的核心健身人群。</p>
+                    </div>
+                    <div class="card p-8 rounded-lg">
+                        <h3 class="text-8xl font-bold text-blue-600 mb-4">狠</h3>
+                        <p class="text-xl text-gray-700">资源投入。以充足的资金投入，在产品、营销和软件生态上建立绝对优势，快速形成品牌壁垒。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <script>
+        // JavaScript for Dropdown Menu
+        const menuButton = document.getElementById('menu-button');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+
+        menuButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!dropdownMenu.classList.contains('hidden') && !menuButton.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+
+        // Original script for charts and slide animations
+        function wrapLabel(label) {
+            const maxLength = 16;
+            if (typeof label !== 'string' || label.length <= maxLength) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = currentLine ? currentLine + ' ' + word : word;
+                }
+            }
+            if (currentLine) lines.push(currentLine);
+            return lines;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) return label.join(' ');
+                return label;
+            };
+
+            const fontColor = '#424242';
+            const gridColor = '#E0E0E0';
+
+            const populationChartCtx = document.getElementById('populationChart').getContext('2d');
+            new Chart(populationChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: [wrapLabel('总人口'), wrapLabel('核心商业健身人口')],
+                    datasets: [
+                        { label: '北美', data: [375000000, 80000000], backgroundColor: 'rgba(0, 115, 230, 0.7)', borderColor: '#004AAD', borderWidth: 1, borderRadius: 4 },
+                        { label: '中国', data: [1420000000, 70000000], backgroundColor: 'rgba(137, 207, 240, 0.7)', borderColor: '#89CFF0', borderWidth: 1, borderRadius: 4 }
+                    ]
+                },
+                options: {
+                    maintainAspectRatio: false, responsive: true,
+                    plugins: {
+                        legend: { position: 'top', labels: { color: fontColor } },
+                        title: { display: true, text: '人口基数对比', color: fontColor, font: {size: 16}},
+                        tooltip: { callbacks: { title: tooltipTitleCallback, label: (context) => `${context.dataset.label}: ${context.parsed.y.toLocaleString()}` } }
+                    },
+                    scales: {
+                        y: { type: 'logarithmic', ticks: { color: fontColor, callback: (value) => Number.isInteger(Math.log10(value)) ? value.toLocaleString() : null }, grid: { color: gridColor } },
+                        x: { ticks: { color: fontColor }, grid: { display: false } }
+                    }
+                }
+            });
+
+            const disposableIncomeChartCtx = document.getElementById('disposableIncomeChart').getContext('2d');
+            new Chart(disposableIncomeChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['北美', '中国'],
+                    datasets: [{
+                        label: '人均年可支配收入 (USD)',
+                        data: [55000, 5500],
+                        backgroundColor: ['rgba(0, 115, 230, 0.7)', 'rgba(137, 207, 240, 0.7)'],
+                        borderColor: ['#004AAD', '#89CFF0'],
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false, responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: '人均年可支配收入', color: fontColor, font: {size: 16}},
+                        tooltip: { callbacks: { label: (context) => `$${context.parsed.y.toLocaleString()} USD` } }
+                    },
+                    scales: {
+                        y: { ticks: { color: fontColor, callback: (value) => '$' + value.toLocaleString() }, grid: { color: gridColor } },
+                        x: { ticks: { color: fontColor }, grid: { display: false } }
+                    }
+                }
+            });
+
+            const healthSpendingChartCtx = document.getElementById('healthSpendingChart').getContext('2d');
+            new Chart(healthSpendingChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['北美', '中国'],
+                    datasets: [{
+                        label: '运动健康年均支出 (USD)',
+                        data: [2200, 500],
+                        backgroundColor: ['rgba(0, 115, 230, 0.7)', 'rgba(137, 207, 240, 0.7)'],
+                        borderColor: ['#004AAD', '#89CFF0'],
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false, responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: '运动健康年均支出', color: fontColor, font: {size: 16}},
+                        tooltip: { callbacks: { label: (context) => `$${context.parsed.y.toLocaleString()} USD` } }
+                    },
+                    scales: {
+                        y: { ticks: { color: fontColor, callback: (value) => '$' + value.toLocaleString() }, grid: { color: gridColor } },
+                        x: { ticks: { color: fontColor }, grid: { display: false } }
+                    }
+                }
+            });
+            
+            const marketSizeChartCtx = document.getElementById('marketSizeChart').getContext('2d');
+            new Chart(marketSizeChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['北美', '中国'],
+                    datasets: [{
+                        label: '健康保健市场总支出',
+                        data: [2.5, 0.89],
+                        backgroundColor: ['rgba(0, 115, 230, 0.7)', 'rgba(137, 207, 240, 0.7)'],
+                        borderColor: ['#004AAD', '#89CFF0'],
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y', maintainAspectRatio: false, responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: '市场总规模 (万亿美元)', color: fontColor, font: {size: 16}},
+                        tooltip: { callbacks: { label: (context) => `$${context.parsed.x} 万亿 USD` } }
+                    },
+                    scales: {
+                        x: { ticks: { color: fontColor, callback: (value) => `$${value}T` }, grid: { color: gridColor } },
+                        y: { ticks: { color: fontColor }, grid: { display: false } }
+                    }
+                }
+            });
+
+            // This script handles the slide-in animation
+            const slides = document.querySelectorAll('.slide');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.5 });
+            slides.forEach(slide => observer.observe(slide));
+        });
+    </script>
+</body>
+</html>
