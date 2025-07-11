@@ -53,8 +53,10 @@
             width: 100%;
             margin-left: auto;
             margin-right: auto;
-            height: 40vh;
-            max-height: 350px;
+            /* BUG FIX: Replaced unreliable '40vh' with a fixed pixel height. */
+            /* This ensures the container has a defined size on mobile devices, */
+            /* allowing Chart.js to render correctly. */
+            height: 300px; 
         }
         .card {
             background-color: #FFFFFF;
