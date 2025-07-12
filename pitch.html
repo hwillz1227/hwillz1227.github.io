@@ -9,15 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- 
-    Chosen Palette: "Calm & Trustworthy" (Print-Friendly) - #FFFFFF, #F5F5F5, #E0E0E0, #757575, #424242, #0073E6.
-    Application Structure Plan: The SPA is designed as a vertical, scroll-based presentation simulating a slide deck. This narrative structure is chosen for its proven effectiveness in investor pitches, guiding the audience through a logical story: Problem -> Solution -> Market -> Competition -> Uniqueness -> Strategy -> Traction & Roadmap -> Ask.
-    Visualization & Content Choices:
-    - Market Data Comparison (Slide 6): Goal: Compare. Method: Four separate Bar Charts (Chart.js/Canvas). Justification: Splitting the data into four charts (Population, Spending Power, Health Spending, Total Market Size) tells a clearer, more powerful story. Confirmed NO SVG.
-    - Tables (Competition, Audience): Goal: Organize/Compare. Method: Styled Table (HTML/Tailwind). Justification: Provides a clear, structured, and easy-to-scan presentation of qualitative and quantitative data. Confirmed NO SVG.
-    - Go-to-Market Strategy & Roadmap: Goal: Organize/Show Process. Method: Phased timeline using styled divs with flexbox (HTML/Tailwind). Justification: A simple, clean, and effective way to visualize a strategic rollout. Confirmed NO SVG.
-    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
-    -->
     <style>
         html {
             scroll-behavior: smooth;
@@ -48,13 +39,13 @@
             width: 100%;
             max-width: 1200px;
         }
+        /* BUG FIX: Reverted to a fixed pixel height for stability on mobile devices. */
         .chart-container {
             position: relative;
             width: 100%;
             margin-left: auto;
             margin-right: auto;
-            height: 40vh;
-            max-height: 400px;
+            height: 300px;
         }
         .card {
             background-color: #FFFFFF;
@@ -197,10 +188,11 @@
             </div>
         </section>
 
+        <!-- MODIFICATION START: Split chart slide into two -->
         <section id="slide6" class="slide">
             <div class="slide-content">
-                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">市场数据对比：北美的价值密度优势</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start justify-center">
+                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">市场数据对比：人口与收入</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start justify-center">
                     <div class="w-full card p-6 rounded-lg">
                         <div class="chart-container">
                             <canvas id="populationChart"></canvas>
@@ -211,6 +203,14 @@
                             <canvas id="disposableIncomeChart"></canvas>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="slide6b" class="slide">
+            <div class="slide-content">
+                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">市场数据对比：支出与规模</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start justify-center">
                     <div class="w-full card p-6 rounded-lg">
                         <div class="chart-container">
                             <canvas id="healthSpendingChart"></canvas>
@@ -225,6 +225,7 @@
                  <p class="text-center text-xl mt-12 font-semibold text-gray-800">投资启示: 北美市场在价值密度上拥有绝对优势。更少的总人口，却拥有更多的核心付费用户、近10倍的人均可支配收入和超4倍的直接消费意愿。</p>
             </div>
         </section>
+        <!-- MODIFICATION END -->
 
         <section id="slide7" class="slide">
             <div class="slide-content">
