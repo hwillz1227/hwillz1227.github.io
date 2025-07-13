@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REPAIRLY | 产品概念</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f5f5f5;
+            padding-top: 80px; /* Add padding to avoid content being hidden by fixed header */
+        }
+        /* Style for smooth transition on the main image */
+        #main-image {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800 tracking-wider">REPAIRLY</a>
+            <div class="relative">
+                <button id="menu-button" class="flex items-center space-x-2 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100 transition duration-300">
+                    <span>导航</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 hidden">
+                    <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">首页</a>
+                    <a href="pitch.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">融资路演</a>
+                    <a href="concept.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">产品概念</a>
+                    <a href="cases.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">成功先例</a>
+                    <a href="credentials.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">资质与伙伴</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content: Image Gallery -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- 
+            重要提示：
+            1. 将您的所有产品概念图上传到您仓库的 'assets' 文件夹中。
+            2. 替换下面主图和缩略图中的 "https://placehold.co/..." 链接为您自己的图片真实路径。
+            3. 确保主图和缩略图的链接是对应的。
+        -->
+        <div class="max-w-4xl mx-auto">
+            <!-- Main Image Display -->
+            <div class="bg-white rounded-lg shadow-2xl p-4 mb-4">
+                <img id="main-image" src="https://placehold.co/1200x800/0073e6/ffffff?text=产品概念+1" alt="产品概念主图" class="w-full h-auto rounded-md aspect-video object-cover">
+            </div>
+
+            <!-- Thumbnail Gallery -->
+            <div id="thumbnail-container" class="grid grid-cols-3 sm:grid-cols-5 gap-4">
+                <img src="https://placehold.co/1200x800/0073e6/ffffff?text=产品概念+1" alt="缩略图 1" class="thumbnail w-full h-auto aspect-square object-cover rounded-md cursor-pointer border-4 border-blue-600">
+                <img src="https://placehold.co/1200x800/424242/ffffff?text=模块化设计" alt="缩略图 2" class="thumbnail w-full h-auto aspect-square object-cover rounded-md cursor-pointer border-4 border-transparent hover:border-blue-300">
+                <img src="https://placehold.co/1200x800/757575/ffffff?text=亲肤材质" alt="缩略图 3" class="thumbnail w-full h-auto aspect-square object-cover rounded-md cursor-pointer border-4 border-transparent hover:border-blue-300">
+                <img src="https://placehold.co/1200x800/e0e0e0/424242?text=极简交互" alt="缩略图 4" class="thumbnail w-full h-auto aspect-square object-cover rounded-md cursor-pointer border-4 border-transparent hover:border-blue-300">
+                <img src="https://placehold.co/1200x800/f5f5f5/424242?text=充电盒" alt="缩略图 5" class="thumbnail w-full h-auto aspect-square object-cover rounded-md cursor-pointer border-4 border-transparent hover:border-blue-300">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navigation Menu Script ---
+            const menuButton = document.getElementById('menu-button');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            menuButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                dropdownMenu.classList.toggle('hidden');
+            });
+            window.addEventListener('click', (event) => {
+                if (!dropdownMenu.classList.contains('hidden') && !menuButton.contains(event.target)) {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+
+            // --- Image Gallery Script ---
+            const mainImage = document.getElementById('main-image');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', () => {
+                    // Set the main image src to the clicked thumbnail's src
+                    mainImage.style.opacity = 0; // Fade out
+                    setTimeout(() => {
+                        mainImage.src = thumbnail.src;
+                        mainImage.style.opacity = 1; // Fade in
+                    }, 300);
+
+
+                    // Update the active state border
+                    thumbnails.forEach(t => {
+                        t.classList.remove('border-blue-600');
+                        t.classList.add('border-transparent');
+                    });
+                    thumbnail.classList.remove('border-transparent');
+                    thumbnail.classList.add('border-blue-600');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
