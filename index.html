@@ -16,54 +16,37 @@
             background-color: #f5f5f5;
         }
         
-        /* --- MODIFICATION START: More aggressive animation style --- */
-
-        /* Define the panning animation */
         @keyframes pan-effect {
             0% {
-                /* Start position of the "camera" with a more aggressive rotation */
                 transform: translate(-35%, -65%) rotateZ(-25deg);
             }
             100% {
-                /* End position of the "camera" with a more aggressive rotation */
                 transform: translate(-65%, -35%) rotateZ(-25deg);
             }
         }
 
-        /* Style for the giant, panning logo */
         #moving-logo {
             position: absolute;
-            /* Make the logo significantly larger than the viewport */
             font-size: 45vw;
             line-height: 1;
-            font-weight: 900; /* Corresponds to font-black */
-            color: rgba(229, 231, 235, 0.9); /* Corresponds to text-gray-200 with opacity */
-            
-            /* Add a heavier 3D effect using more text-shadow layers */
+            font-weight: 900;
+            color: rgba(229, 231, 235, 0.9);
             text-shadow: 1px 1px 0px #e0e0e0,
                          2px 2px 0px #d6d6d6,
                          3px 3px 0px #cccccc,
                          4px 4px 0px #c2c2c2,
                          5px 5px 0px #b8b8b8,
                          6px 6px 0px #adadad;
-
-            /* Center the oversized text block */
+            filter: blur(3px);
             top: 50%;
             left: 50%;
-            
-            /* Make text non-selectable */
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            
-            /* Ensure it stays behind the main content */
             z-index: 0;
-
-            /* Apply the animation: 40s duration, linear speed, infinite loop, pans back and forth */
             animation: pan-effect 40s linear infinite alternate;
         }
-        /* --- MODIFICATION END --- */
     </style>
 </head>
 <body class="bg-gray-100">
@@ -73,15 +56,14 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold text-gray-800 tracking-wider">REPAIRLY</a>
             <div class="relative">
-                <!-- Dropdown Menu Button -->
                 <button id="menu-button" class="flex items-center space-x-2 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100 transition duration-300">
                     <span>导航</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <!-- Dropdown Menu -->
                 <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 hidden">
                     <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">首页</a>
                     <a href="pitch.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">融资路演</a>
+                    <a href="concept.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">产品概念</a>
                     <a href="cases.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">成功先例</a>
                     <a href="credentials.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white">资质与伙伴</a>
                 </div>
@@ -91,12 +73,8 @@
 
     <!-- Main Content -->
     <main class="pt-20">
-        <!-- Hero Section -->
         <section class="hero-bg relative overflow-hidden">
-            <!-- The moving background logo. Classes are now handled in CSS. -->
             <div id="moving-logo">REPAIRLY</div>
-            
-            <!-- The main content, positioned above the background logo -->
             <div class="container mx-auto flex flex-col items-center justify-center min-h-screen text-center px-6 relative z-10">
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-800 mb-4">REPAIRLY</h1>
                 <p class="text-xl md:text-2xl font-light text-gray-600 mb-8 max-w-3xl">一个已被验证、尚无领导者、且由法规保护的蓝海机遇。我们正在重新定义北美运动康复市场。</p>
@@ -109,7 +87,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // JavaScript for Dropdown Menu
             const menuButton = document.getElementById('menu-button');
             const dropdownMenu = document.getElementById('dropdown-menu');
 
