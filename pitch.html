@@ -39,7 +39,7 @@
             width: 100%;
             max-width: 1200px;
         }
-        /* BUG FIX: Reverted to a fixed pixel height for stability on mobile devices. */
+        /* BUG FIX: Using a fixed pixel height for chart containers to ensure stability on all devices. */
         .chart-container {
             position: relative;
             width: 100%;
@@ -188,8 +188,8 @@
                 <p class="text-2xl md:text-3xl text-blue-600 mt-4">一个为您准备好的蓝海</p>
             </div>
         </section>
-
-        <!-- MODIFICATION START: Split chart slide into two -->
+        
+        <!-- MODIFICATION: Split chart slides for mobile stability -->
         <section id="slide6" class="slide">
             <div class="slide-content">
                  <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">市场数据对比：人口与收入</h2>
@@ -288,7 +288,7 @@
 
         <section id="slide9" class="slide">
             <div class="slide-content text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">成功先例 - 已被中国市场验证</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">成功先例 - 已被中国市场验证</h2>
                 <div class="card p-6 rounded-lg max-w-4xl mx-auto">
                     <p class="text-lg text-gray-600 mb-6">已有产品是绝佳的证据，它向投资人证明了这不是一个猜想，而是一个拥有强大市场吸引力的成熟模式。</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -341,7 +341,7 @@
                 </div>
             </div>
         </section>
-
+        
         <section id="slide12" class="slide">
             <div class="slide-content">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">产品核心理念</h2>
@@ -439,7 +439,7 @@
                             <li><strong class="text-gray-900">Q4 2025:</strong> 启动加拿大MDL和美国510(k)申请。</li>
                             <li><strong class="text-gray-900">Q1 2026:</strong> 完成首批1000-2000台产品生产和北美仓储。</li>
                             <li><strong class="text-gray-900">Q2 2026:</strong> 启动KOL预热和市场营销，产品上线。</li>
-                            <li><strong class="text-gray-900">Q1 2027:</strong> 达成第一年营收目标，启动A轮融资。</li>
+                            <li><strong class="text-gray-900">Q1 2027:</strong> 达成第一阶段营收目标，启动A轮融资。</li>
                         </ul>
                     </div>
                 </div>
@@ -447,6 +447,40 @@
         </section>
 
         <section id="slide16" class="slide">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">第一阶段销售与营收预测</h2>
+                <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">基于国内同类产品两个月销量超13万台的已验证市场需求，我们摒弃了传统的“冷启动”模型，采用更贴近现实潜力的“快速占领”模型，并制定了三种情景预测。</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="card p-8 rounded-lg border-2 border-gray-300">
+                        <h3 class="text-2xl font-bold text-gray-500 mb-4">保守预测</h3>
+                        <p class="text-5xl font-bold text-gray-700">10,000台</p>
+                        <p class="text-gray-500 mb-6">第一阶段总销量</p>
+                        <hr class="my-6">
+                        <p class="text-3xl font-bold text-gray-700">约 $199万</p>
+                        <p class="text-gray-500">第一阶段总营收 (USD)</p>
+                    </div>
+                    <div class="card p-8 rounded-lg border-2 border-blue-600 transform md:scale-105">
+                        <h3 class="text-2xl font-bold text-blue-600 mb-4">实际目标</h3>
+                        <p class="text-5xl font-bold text-blue-700">17,000台</p>
+                        <p class="text-gray-500 mb-6">第一阶段总销量</p>
+                        <hr class="my-6">
+                        <p class="text-3xl font-bold text-blue-700">约 $338万</p>
+                        <p class="text-gray-500">第一阶段总营收 (USD)</p>
+                    </div>
+                    <div class="card p-8 rounded-lg border-2 border-gray-300">
+                        <h3 class="text-2xl font-bold text-gray-500 mb-4">乐观预测</h3>
+                        <p class="text-5xl font-bold text-gray-700">30,000台</p>
+                        <p class="text-gray-500 mb-6">第一阶段总销量</p>
+                        <hr class="my-6">
+                        <p class="text-3xl font-bold text-gray-700">约 $597万</p>
+                        <p class="text-gray-500">第一阶段总营收 (USD)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide17" class="slide">
             <div class="slide-content text-center">
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-12">结论：快、准、狠</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -627,4 +661,4 @@
         });
     </script>
 </body>
-</html>
+</ht
